@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .home-button a {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .home-button a:hover {
+            background-color: #0056b3;
+        }
+
+        .result-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+        }
+
+        .img-container {
+            width: 45%;
+        }
+
+        .img-container h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            max-height: 200px; 
+            border-radius: 5px;
+            border: 2px solid #ddd;
+        }
+
+        .prediction {
+            margin-top: 15px;
+            background: #ffebee;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #d9534f;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .result-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .img-container {
+                width: 80%;
+            }
+
+            .img-container img {
+                max-height: 150px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-button">
+        <a href="{{ url_for('home') }}">Home</a>
+    </div>
+
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result-wrapper">
+            <div class="img-container">
+                <h3>Original X-ray</h3>
+                <img src="{{ original_image }}" alt="Original X-ray">
+            </div>
+            <div class="img-container">
+                <h3>Grad-CAM Visualization</h3>
+                <img src="{{ grad_cam_image }}" alt="Grad-CAM Visualization">
+            </div>
+        </div>
+        <div class="prediction">
+            Predicted Severity: <br>
+            <span>{{ prediction }}</span>
+        </div>
+        <br>
+        <a href="{{ url_for('prediction') }}" class="btn">Try Another Image</a>
+    </div>
+</body>
+</html>

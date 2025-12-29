@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <title>Knee OA Prediction</title>
+        <style>
+            body{
+                background-image: url("{{ url_for('static', filename='images/1home_img.jpg') }}");
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 100vh;
+                margin: 0;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-family:'Times New Roman', Times, serif;
+                position: relative;
+            }
+            
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5); 
+                z-index: 0;
+            }
+            .buttons {
+            position: absolute;
+            top: 20px;
+            right: 70px;
+            display: flex;
+            gap: 40px;
+        }
+
+        button{
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: transparent;
+            cursor: pointer;
+            color: white;
+            border: 1px solid white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            }
+        
+        button:hover{
+            background-color: #E0E0E0;
+            color: black;
+            transform: scale(1.1) translateY(-3px);;
+            box-shadow: 0 0 15px #E0E0E0,0 30px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .typing-text {
+        position: absolute;
+        top: 50%;
+        right: 5.2%; 
+        transform: translateY(-50%);
+        font-size: 44px;
+        font-weight: bold;
+        color: white;
+        direction:rtl;
+        text-align: right;
+        border-right: 2px solid white; 
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        animation: typing 3s steps(50) forwards, removeCursor 0s 1.5s forwards;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 80%; }
+    }
+
+    @keyframes removeCursor {
+        from { border-right: 2px solid white; }
+        to { border-right: none; }
+    }
+
+        </style>
+    </head>
+    <body>
+        <div class="overlay"></div>
+        <form action="/handle_button" method="post">
+        <div class="buttons">
+            <button type="submit" name="button" value="home">Home</button>
+            <button type="submit" name="button" value="about">About</button>
+            <button type="submit" name="button" value="prediction">Prediction</button>
+            <button type="submit" name="button" value="report">Report</button>
+        </div>
+    </form>
+        <div class="typing-text">Welcome to Knee Osteoarthritis Prediction</div>
+    </body>
+</html>

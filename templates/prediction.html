@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/1home_img.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 320px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 125px;
+            margin-left: 150px;
+        }
+        .buttons {
+            position: absolute;
+            top: 20px;
+            right: 70px;
+            display: flex;
+            gap: 40px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: transparent;
+            cursor: pointer;
+            color: white;
+            border: 1px solid white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #E0E0E0;
+            color: black;
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 0 15px #E0E0E0, 0 30px 15px rgba(0, 0, 0, 0.3);
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .predict-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .predict-btn:hover {
+            background-color: #32CD32;
+            color: white;
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 0 15px #90EE90;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="buttons">
+        <form action="/handle_button" method="post">
+            <button type="submit" name="button" value="home">Home</button>
+            <button type="submit" name="button" value="about">About</button>
+            <button type="submit" name="button" value="prediction">Prediction</button>
+            <button type="submit" name="button" value="report">Report</button>
+        </form>
+    </div>
+    
+    <form class="form-container" action="/predict" method="post" enctype="multipart/form-data">
+        <div class="input-group">
+            <label for="file">Upload Knee X-ray image</label>
+            <input type="file" name="file" id="file" accept=".jpg, .png, .jpeg" required>
+            <button type="submit" class="predict-btn">Predict</button>
+        </div>
+    </form>
+</body>
+</html>

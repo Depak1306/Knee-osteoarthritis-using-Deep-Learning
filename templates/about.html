@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <title>About</title>
+        <style>
+            body{
+                background-image: url("{{ url_for('static', filename='images/1home_img.jpg') }}");
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 100vh;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Times New Roman', Times, serif;
+                position: relative;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6); 
+                z-index: 0;
+            }
+            .buttons {
+            position: absolute;
+            top: 20px;
+            right: 70px;
+            display: flex;
+            gap: 40px;
+        }
+
+            button{
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: transparent;
+            cursor: pointer;
+            color: white;
+            border: 1px solid white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            }
+
+            button:hover{
+            background-color: #E0E0E0;
+            color: black;
+            transform: scale(1.1) translateY(-3px);;
+            box-shadow: 0 0 15px #E0E0E0, 0 30px 15px rgba(0, 0, 0, 0.3);
+            }
+            .content {
+                max-width: 800px;
+                text-align: center;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.2); /* Light background for contrast */
+                border-radius: 10px;
+                color: white;
+                position: relative;
+                z-index: 2;
+                margin-top: -80px;
+            }
+
+            h1{
+                font-size: 36px;
+                margin-bottom: 1px;
+            }
+            hr {
+                border: none;
+                height: 2px;
+                background-color: white;
+                margin: 10px auto;
+                width: 80%;
+            }
+            p{
+                font-size: 18px;
+                line-height: 1.6;
+                text-align: justify;
+            }
+            
+        </style>
+        </head>
+        <body>
+            <div class="overlay"></div>
+            <form action="/handle_button" method="post">
+                <div class="buttons">
+                    <button type="submit" name="button" value="home">Home</button>
+                    <button type="submit" name="button" value="about">About</button>
+                    <button type="submit" name="button" value="prediction">Prediction</button>
+                    <button type="submit" name="button" value="report">Report</button>
+                </div>
+            </form>
+            <div class="content">
+                <h1> Knee Osteoarthritis</h1>
+                <hr>
+                <p>
+                    Knee Osteoarthritis (OA) is a common joint condition that can cause pain, stiffness, and reduced mobility. 
+                    Early detection is key to better management, and that’s exactly what our AI-powered system helps with.
+                    Using deep learning, our tool analyzes knee X-ray images and predicts OA severity with high accuracy.
+                    It provides clear insights and personalized recommendations, making it easier for users to understand their condition and take proactive steps.
+                    With a fast, user-friendly interface and an automated report delivered straight to your inbox, we aim to make knee health assessment accessible, reliable, and hassle-free.
+                    Take control of your joint health today!
+                </p>
+            </div>
+        </body>
+</html>
